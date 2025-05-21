@@ -28,11 +28,9 @@ fun modifyContact (name: String, newName: String): MutableList<ContactDetails>{
 }
 
 //Removes Contact Details
-fun removeContactDetails(deletedname: String): MutableList<ContactDetails>{
-    for(contact in contactDetails){
-        if(contact.name.lowercase().contains(deletedname)){
-            contactDetails.remove(contact)
-        }
+fun removeContactDetails(deletedname: String): MutableList<ContactDetails> {
+    contactDetails.removeIf { contact ->
+        contact.name.lowercase().contains(deletedname.lowercase())
     }
     return contactDetails
 }
